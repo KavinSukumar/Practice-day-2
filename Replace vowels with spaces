@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int i, choice;
+
+    printf("Choose an option:\n");
+    printf("1. Replace all vowels with spaces\n");
+    printf("2. Mask entire input with '*'\n");
+    printf("Enter your choice (1 or 2): ");
+    scanf("%d", &choice);
+    getchar();
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    i = 0;
+    while (str[i] != '\0') {
+        if (str[i] == '\n') {
+            str[i] = '\0';
+            break;
+        }
+        i++;
+    }
+
+    if (choice == 1) {
+        i = 0;
+        while (str[i] != '\0') {
+            if (str[i] == 'a' || str[i] == 'A' ||
+                str[i] == 'e' || str[i] == 'E' ||
+                str[i] == 'i' || str[i] == 'I' ||
+                str[i] == 'o' || str[i] == 'O' ||
+                str[i] == 'u' || str[i] == 'U') {
+                str[i] = ' ';
+            }
+            i++;
+        }
+    } else if (choice == 2) {
+        i = 0;
+        while (str[i] != '\0') {
+            str[i] = '*';
+            i++;
+        }
+    } else {
+        printf("Invalid choice.\n");
+        return 1;
+    }
+
+    printf("Output: %s\n", str);
+    return 0;
+}
